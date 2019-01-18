@@ -1,0 +1,10 @@
+{
+  "name": "cmds",
+  "version": "0.1.0",
+  "description": "A light command framework",
+  "main": "index.js",
+  "repository": "git@github.com:SoggyPiggy/cmds.git",
+  "author": "SoggyPiggy <soggypiggy@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
