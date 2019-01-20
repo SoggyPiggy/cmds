@@ -1,2 +1,2 @@
-# cmds
-A light command framework
+# discord.cmds
+A light command framework for discord.js
