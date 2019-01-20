@@ -14,9 +14,8 @@ module.exports = class Registry {
 
   createGroup({id, name}) {
     if (typeof id !== 'string') throw new Error('Command group id needs to be string');
-    if (typeof name !== 'string') throw new Error('Command group name needs to be string');
     if (this.groups.has(id)) throw new Error(`Command group id '${id}' is already in use`);
-    const group = createGroup({ id, name });
+    const group = typeof name === 'string' ? createGroup({ id, name }) : createGroup ({ id, id });
     this.groups.set(group.id, group);
     return this;
   }
