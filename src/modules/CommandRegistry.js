@@ -6,7 +6,7 @@ const createGroup = function createCommandGroup({ id = null, name = null }) {
   }
 }
 
-module.exports = class Registry {
+module.exports = class CommandRegistry {
   constructor() {
     this.commands = new Map();
     this.groups = new Map([[null, createGroup()]]);
