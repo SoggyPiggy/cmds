@@ -3,8 +3,8 @@ const createGroup = function createCommandGroup({ id = null, name = null }) {
     id,
     name,
     commands: new Map(),
-  }
-}
+  };
+};
 
 module.exports = class CommandRegistry {
   constructor() {
@@ -12,14 +12,14 @@ module.exports = class CommandRegistry {
     this.groups = new Map([[null, createGroup()]]);
   }
 
-  createGroup({id, name}) {
+  createGroup({ id, name }) {
     if (typeof id !== 'string') throw new Error('Command group id needs to be string');
     if (this.groups.has(id)) throw new Error(`Command group id '${id}' is already in use`);
-    const group = typeof name === 'string' ? createGroup({ id, name }) : createGroup ({ id, id });
+    const group = typeof name === 'string' ? createGroup({ id, name }) : createGroup({ id, name: id });
     this.groups.set(group.id, group);
     return this;
   }
-  
+
   createGroups(groups = []) {
     groups.forEach((group) => {
       try {
@@ -30,4 +30,4 @@ module.exports = class CommandRegistry {
     });
     return this;
   }
-}
+};
