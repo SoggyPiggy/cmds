@@ -7,6 +7,9 @@
   "author": "SoggyPiggy <soggypiggy@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "lint": "eslint ./ --fix"
+  },
   "devDependencies": {
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
