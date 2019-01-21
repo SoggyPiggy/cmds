@@ -6,5 +6,10 @@
   "repository": "git@github.com:SoggyPiggy/cmds.git",
   "author": "SoggyPiggy <soggypiggy@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
 }
