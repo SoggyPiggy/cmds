@@ -7,7 +7,8 @@ const createGroup = function createCommandGroup({ id = null, name = null }) {
 };
 
 module.exports = class CommandRegistry {
-  constructor() {
+  constructor(cmds) {
+    this.cmds = cmds;
     this.commands = new Map();
     this.groups = new Map([[null, createGroup()]]);
   }
