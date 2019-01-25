@@ -1,5 +1,5 @@
 const { EventEmitter } = require('events');
-const { Command } = require('./modules');
+const { Command, CommandRegistry } = require('./modules');
 
 module.exports = class Cmds extends EventEmitter {
   constructor(discord, {
@@ -7,6 +7,7 @@ module.exports = class Cmds extends EventEmitter {
   }) {
     super();
     this.discord = discord;
+    this.registry = new CommandRegistry(this);
     this.prefixes = Array.isArray(prefix) ? prefix : [prefix];
   }
 
