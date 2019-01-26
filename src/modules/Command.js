@@ -7,6 +7,21 @@ const genAliases = function generateAliasesFromAliasesAndID(id, aliases) {
   ])];
 };
 
+const splitArgs = function splitArgumentsIntoSeparateStrings(rawArgs) {
+  if (!rawArgs) return [];
+  const regex = /(['"])(.+?)\1|\S+/g;
+  const args = [];
+  let match = null;
+  do {
+    match = regex.exec(rawArgs);
+    if (match) {
+      if (match[2]) args.push(match[2]);
+      else args.push(match[0]);
+    }
+  } while (match);
+  return args;
+};
+
 module.exports = class Command {
   constructor({
     id = null,
