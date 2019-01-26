@@ -25,13 +25,7 @@ module.exports = class CommandRegistry {
   }
 
   createGroups(groups = []) {
-    groups.forEach((group) => {
-      try {
-        this.createGroup(group);
-      } catch (error) {
-        console.warn(error);
-      }
-    });
+    groups.forEach((group) => { this.createGroup(group); });
     return this;
   }
 
