@@ -11,8 +11,12 @@
     "lint": "eslint ./ --fix"
   },
   "devDependencies": {
+    "discord.js": "^11.4.2",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0"
+  },
+  "peerDependencies": {
+    "discord.js": "^11.4.2"
   }
 }
