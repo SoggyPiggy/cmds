@@ -31,7 +31,7 @@ module.exports = class Command {
     details = '',
     examples = [],
     parameters = [],
-    run = message => message.reply(`Command '${id}' run not set up properly`),
+    run = async ({ message }) => message.reply(`Command '${id}' run not set up properly`),
   }) {
     if (typeof id !== 'string') throw new Error('Command must have string id');
     this.id = id.toLowerCase();
