@@ -30,7 +30,7 @@ module.exports = class Command {
     description = '',
     details = '',
     examples = [],
-    args = [],
+    parameters = [],
     run = message => message.reply(`Command '${id}' run not set up properly`),
   }) {
     if (typeof id !== 'string') throw new Error('Command must have string id');
@@ -40,7 +40,7 @@ module.exports = class Command {
     this.description = description;
     this.details = details;
     this.examples = examples;
-    this.args = args;
+    this.parameters = parameters;
     this.run = run;
   }
 
