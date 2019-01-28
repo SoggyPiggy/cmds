@@ -16,6 +16,10 @@ module.exports = class CommandRegistry {
     this.groups = new Map([[null, createGroup()]]);
   }
 
+  processOperation(data) {
+    if (!this.commands.has(data.operation)) return;
+  }
+
   createGroup({ id, name }) {
     if (typeof id !== 'string') throw new Error('Command group id needs to be string');
     if (this.groups.has(id)) throw new Error(`Command group id '${id}' is already in use`);
