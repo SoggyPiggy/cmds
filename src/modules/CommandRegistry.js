@@ -17,7 +17,9 @@ module.exports = class CommandRegistry {
   }
 
   processOperation(data) {
-    if (!this.commands.has(data.operation)) return;
+    const command = this.commands.get(data.operation);
+    if (!command) return; // TODO: Add command failure checking for proper rewritten commands
+    command.process(data);
   }
 
   createGroup({ id, name }) {
