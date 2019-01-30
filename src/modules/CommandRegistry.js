@@ -1,18 +1,11 @@
 const Command = require('./Command');
-
-const createGroup = function createCommandGroup({ id = null, name = null }) {
-  return {
-    id,
-    name,
-    commands: new Map(),
-  };
-};
+const CommandGroup = require('./CommandGroup');
 
 module.exports = class CommandRegistry {
   constructor(cmds) {
     this.cmds = cmds;
     this.commands = new Map();
-    this.groups = new Map([[null, createGroup()]]);
+    this.groups = new Map([[null, new CommandGroup()]]);
   }
 
   processOperation(data) {
@@ -24,7 +17,7 @@ module.exports = class CommandRegistry {
   createGroup({ id, name }) {
     if (typeof id !== 'string') throw new Error('Command group id needs to be string');
     if (this.groups.has(id)) throw new Error(`Command group id '${id}' is already in use`);
-    const group = typeof name === 'string' ? createGroup({ id, name }) : createGroup({ id, name: id });
+    const group = new CommandGroup({ id, name });
     this.groups.set(group.id, group);
     return this;
   }
