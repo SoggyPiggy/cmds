@@ -25,7 +25,6 @@ module.exports = class Cmds extends EventEmitter {
       operation,
       rawArguments,
     });
-    const parameters = params ? params.match(/(['"]).+\1|\S+/g).map(param => param.replace(/^(['"])?(.+?)\1$/, '')) : [];
   }
 
   static get Command() {
