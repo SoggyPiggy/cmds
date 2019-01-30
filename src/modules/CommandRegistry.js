@@ -37,7 +37,7 @@ module.exports = class CommandRegistry {
 
   registerCommand(constructor) {
     if (typeof constructor !== 'function') throw new Error('Cannot register improper command constructor');
-    const command = new constructor();
+    const command = new constructor(this.cmds);
     if (command instanceof Command) throw new Error('Command constructor did not produce Command instance');
     command.registerCmds(this.cmds);
     if (!this.groups.has(command.group)) this.createGroup({ id: command.group });
@@ -53,8 +53,8 @@ module.exports = class CommandRegistry {
 
   createCommand(options = {}) {
     this.registerCommand(class extends Command {
-      constructor() {
-        super(options);
+      constructor(cmds) {
+        super(cmds, options);
       }
     });
   }

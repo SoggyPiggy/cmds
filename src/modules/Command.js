@@ -23,7 +23,7 @@ const splitArgs = function splitArgumentsIntoSeparateStrings(rawArgs) {
 };
 
 module.exports = class Command {
-  constructor({
+  constructor(cmds, {
     id = null,
     aliases = [],
     group = null,
@@ -33,6 +33,8 @@ module.exports = class Command {
     parameters = [],
     run = async ({ message }) => message.reply(`Command '${id}' run not set up properly`),
   }) {
+    this.cmds = cmds;
+    this.registry = cmds.registry;
     if (typeof id !== 'string') throw new Error('Command must have string id');
     this.id = id.toLowerCase();
     this.aliases = genAliases(id, aliases);
@@ -42,10 +44,5 @@ module.exports = class Command {
     this.examples = examples;
     this.parameters = parameters;
     this.run = run;
-  }
-
-  registerCmds(cmds) {
-    this.cmds = cmds;
-    this.registry = cmds.registry;
   }
 };
