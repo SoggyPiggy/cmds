@@ -1,3 +1,5 @@
+const Parameter = require('./Parameter');
+
 const genAliases = function generateAliasesFromAliasesAndID(id, aliases) {
   return [...Set([
     ...aliases.map(alias => alias.toLowerCase()),
@@ -42,7 +44,10 @@ module.exports = class Command {
     this.description = description;
     this.details = details;
     this.examples = examples;
-    this.parameters = parameters;
+    this.parameters = parameters.map((parameter, index) => {
+      const isLast = index === parameters.length - 1;
+      return new Parameter(this, isLast, parameter);
+    });
     this.run = run;
   }
 };
