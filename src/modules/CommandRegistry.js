@@ -1,11 +1,13 @@
 const Command = require('./Command');
 const CommandGroup = require('./CommandGroup');
+const ParameterType = require('./ParameterType');
 
 module.exports = class CommandRegistry {
   constructor(cmds) {
     this.cmds = cmds;
     this.commands = new Map();
     this.groups = new Map([[null, new CommandGroup()]]);
+    this.parameterTypes = new Map([[null, new ParameterType({ id: 'string' })]]);
   }
 
   processOperation(data) {
