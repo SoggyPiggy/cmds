@@ -12,7 +12,6 @@ module.exports = class CommandRegistry {
   constructor(cmds) {
     this.cmds = cmds;
     this.commands = new Map();
-    this.commandAliases = new Set();
     this.groups = new Map([[null, createGroup()]]);
   }
 
