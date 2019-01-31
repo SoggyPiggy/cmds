@@ -23,4 +23,12 @@ module.exports = class Parameter {
     this.required = required;
     this.regex = regex;
   }
+
+  async process(arguments, position) {
+    let value;
+    if (position !== null) {
+      this.regex.lastIndex = position;
+      value = this.regex.exec(arguments)[0];
+    }
+  }
 };
