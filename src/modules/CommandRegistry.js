@@ -11,8 +11,10 @@ module.exports = class CommandRegistry {
   }
 
   processOperation(data) {
+    // TODO: Add command failure checking for proper rewritten commands
+    if (!data.isCommand) return;
     const command = this.commands.get(data.operation);
-    if (!command) return; // TODO: Add command failure checking for proper rewritten commands
+    if (!command) return;
     command.process(data);
   }
 
