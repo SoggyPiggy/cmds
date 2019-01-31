@@ -20,16 +20,9 @@ module.exports = class Cmds extends EventEmitter {
   }
 
   processMessage(message) {
-    const prefixRegex = new RegExp(`^(${this.prefixes.map(prefix => prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})? ?(.+)`);
-    const prefixMatch = prefixRegex.exec(message.content);
-    if (!(prefixMatch[1] || message.channel instanceof DMChannel)) return;
-    const [command, operation, rawArguments] = prefixMatch[2].match(/(\S+)(?: (.+))?/);
-    this.registry.processOperation({
-      message,
-      command,
-      operation,
-      rawArguments,
-    });
+    const data = this.utils.parseMessage(message);
+    this.registry.processOperation(data);
+    this.emit('messageParsed', data);
   }
 
   static get Command() {
