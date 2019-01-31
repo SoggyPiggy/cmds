@@ -4,6 +4,7 @@ const {
   Command,
   CommandRegistry,
   ParameterType,
+  Utils,
 } = require('./modules');
 
 module.exports = class Cmds extends EventEmitter {
@@ -14,7 +15,7 @@ module.exports = class Cmds extends EventEmitter {
     this.discord = discord;
     this.registry = new CommandRegistry(this);
     this.prefixes = [prefix].flat();
-
+    this.utils = new Utils(this);
     this.discord.on('message', message => this.processMessage(message));
   }
 
