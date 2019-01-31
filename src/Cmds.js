@@ -1,6 +1,10 @@
 const { DMChannel } = require('discord.js');
 const { EventEmitter } = require('events');
-const { Command, CommandRegistry } = require('./modules');
+const {
+  Command,
+  CommandRegistry,
+  ParameterType,
+} = require('./modules');
 
 module.exports = class Cmds extends EventEmitter {
   constructor(discord, {
@@ -29,5 +33,9 @@ module.exports = class Cmds extends EventEmitter {
 
   static get Command() {
     return Command;
+  }
+
+  static get ParameterType() {
+    return ParameterType;
   }
 };
