@@ -50,4 +50,13 @@ module.exports = class Command {
     });
     this.run = run;
   }
+
+  async process(data) {
+    const { rawArguments } = data;
+    const arguments = {};
+    let lastIndex = 0;
+    this.parameters.forEach((parameter) => {
+      const { value, index } = await parameter.process(rawArguments, lastIndex);
+    }
+  }
 };
